@@ -30,7 +30,7 @@
 			securityJsCode: 'b8f5b97e31640eb98cca609018c30d95'
 		};
 	</script>
-	<script type="text/javascript" src="https://webapi.amap.com/maps?v=1.4.15&key=<c5930af73290688d270e1169400b570c>&plugin=AMap.Geocoder,AMap.Driving"></script>
+	<script type="text/javascript" src="https://webapi.amap.com/maps?v=1.4.15&key=c5930af73290688d270e1169400b570c&plugin=AMap.Geocoder,AMap.Driving"></script>
 	<script>
 		function generatePlan() {
     var destination = document.getElementById("destination").value;
@@ -48,7 +48,7 @@
             plan += "<h3>" + name + "</h3>";
 
             // 使用导航API搜索附近的景点
-            var url = "https://restapi.amap.com/v3/place/around?key=<c5930af73290688d270e1169400b570c>&location=" + location.lng + "," + location.lat + "&radius=5000&types=110000&page=1&offset=5&extensions=all";
+            var url = "https://restapi.amap.com/v3/place/around?key=f0f6fa08c81babf56a0ee59ffe233110&location=" + location.lng + "," + location.lat + "&radius=5000&types=110000&page=1&offset=5&extensions=all";
             fetch(url).then(function(response) {
                 return response.json();
             }).then(function(json) {
@@ -58,11 +58,11 @@
                 var directions = [];
                 attractions.forEach(function(attraction) {
                     var attractionName = attraction.name;
-                    var destination = attraction.location.lng + "," + attraction.location.lat;
+                    var destination = attraction.location;//.lng + "," + attraction.location.lat;
 
                     // 构造请求URL
                     var params = {
-                        key: "<c5930af73290688d270e1169400b570c>",
+                        key: "f0f6fa08c81babf56a0ee59ffe233110",
                         origin: location.lng + "," + location.lat,
                         destination: destination,
                         strategy: 9, // 最少时间
@@ -70,7 +70,7 @@
                         output: "json"
                     };
                     var routeUrl = "https://restapi.amap.com/v3/direction/driving?" + new URLSearchParams(params);
-
+https://restapi.amap.com/v3/direction/driving?origin=116.45925,39.910031&destination=116.587922,40.081577&output=json&key=f0f6fa08c81babf56a0ee59ffe233110
                     // 执行请求并处理响应
                     fetch(routeUrl).then(function(response) {
                         return response.json();
@@ -111,4 +111,6 @@
         }
     });
 }
-
+</script>
+</body>
+</html>
